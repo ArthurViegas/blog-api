@@ -11,8 +11,8 @@ const validations = [
 
 const router = express.Router();
 
-router.get('/search', checkToken, postController.search);
-router.get('/', checkToken, postController.getAll);
+router.get('/search', postController.search);
+router.get('/', postController.getAll);
 router.get('/:id', checkToken, postController.getById);
 router.post('/', validations, postController.createPost);
 router.put('/:id', checkToken, checkUpdateBody, postController.updatePost);
