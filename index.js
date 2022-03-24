@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const { DB_PORT } = process.env;
+const { PORT } = process.env;
 
 const app = express();
 const userRouter = require('./routers/userRouter');
@@ -19,7 +19,7 @@ app.use('/login', loginRouter);
 app.use('/categories', categRouter);
 app.use('/post', postRouter);
 
-app.listen(DB_PORT);
+app.listen(PORT || 3000);
 
 app.use((err, _req, res, _next) => {
   if (err.status) return res.status(err.status).json({ message: err.message });
